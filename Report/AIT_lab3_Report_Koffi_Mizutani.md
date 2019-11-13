@@ -2,36 +2,6 @@
 
 **Authors: Olivier Koffi, Nathanaël Mizutani**
 
-## Task 1: Install the tools
-
-1. Explain how the load balancer behaves when you open and refresh the
-URL <http://192.168.42.42> in your browser. Add screenshots to
-complement your explanations. We expect that you take a deeper a
-look at session management.
-
-2. Explain what should be the correct behavior of the load balancer for
-session management.
-
-3. Provide a sequence diagram to explain what is happening when one
-requests the URL for the first time and then refreshes the page. We
-want to see what is happening with the cookie. We want to see the
-sequence of messages exchanged (1) between the browser and HAProxy
-and (2) between HAProxy and the nodes S1 and S2.
-
-4. Provide a screenshot of the summary report from JMeter.
-
-5. 4. Run the following command:
-
-  ```bash
-  $ docker stop s1
-  ```
-
-  Clear the results in JMeter and re-run the test plan. Explain what
-  is happening when only one node remains active. Provide another
-  sequence diagram using the same model as the previous one.# AIT - Laboratoire 3 - Load Balancing
-
-**Authors: Olivier Koffi, Nathanaël Mizutani**
-
 ### Task 1: Install the tools
 
 1. Explain how the load balancer behaves when you open and refresh the
@@ -39,8 +9,16 @@ URL <http://192.168.42.42> in your browser. Add screenshots to
 complement your explanations. We expect that you take a deeper a
 look at session management.
 
+**Réponse**
+**When we refresh the browser on the URL http://192.168.42.42 we can see that the request is send alternatively on each web servers.
+We also can see that the session id is refreshed for each request. That means that a new session is open and close on each request. That means that servers are stateless.**
+![firstConnection](./images/firstConnection.png)
+![firstConnection](./images/secondConnection.png)
+
 2. Explain what should be the correct behavior of the load balancer for
 session management.
+**Réponses**
+**Servers should manage sessions. That means they should be statefull**
 
 3. Provide a sequence diagram to explain what is happening when one
 requests the URL for the first time and then refreshes the page. We
@@ -48,46 +26,19 @@ want to see what is happening with the cookie. We want to see the
 sequence of messages exchanged (1) between the browser and HAProxy
 and (2) between HAProxy and the nodes S1 and S2.
 
-4. Provide a screenshot of the summary report from JMeter.
+**Réponses**
+**Faire un diagramme de séquence**
 
-5. 4. Run the following command:
+4. Provide a screenshot of the summary report from JMeter.
+![](images/JMeterSummaryReportTask1.png)
+
+5. Run the following command:
 
   ```bash
   $ docker stop s1
   ```
 
-  Clear the results in JMeter and re-run the test plan. Explain what
-  is happening when only one node remains active. Provide another
-  sequence diagram using the same model as the previous one.# AIT - Laboratoire 3 - Load Balancing
-
-**Authors: Olivier Koffi, Nathanaël Mizutani**
-
-### Task 1: Install the tools
-
-1. Explain how the load balancer behaves when you open and refresh the
-URL <http://192.168.42.42> in your browser. Add screenshots to
-complement your explanations. We expect that you take a deeper a
-look at session management.
-
-2. Explain what should be the correct behavior of the load balancer for
-session management.
-
-3. Provide a sequence diagram to explain what is happening when one
-requests the URL for the first time and then refreshes the page. We
-want to see what is happening with the cookie. We want to see the
-sequence of messages exchanged (1) between the browser and HAProxy
-and (2) between HAProxy and the nodes S1 and S2.
-
-4. Provide a screenshot of the summary report from JMeter.
-
-5. 4. Run the following command:
-
-  ```bash
-  $ docker stop s1
-  ```
-
-  Clear the results in JMeter and re-run the test plan. Explain what
-  is happening when only one node remains active. Provide another
+  Clear the results in JMeter and re-run the test plan. Explain what is happening when only one node remains active. Provide another
   sequence diagram using the same model as the previous one.
 
 ### Task 2: Sticky sessions
