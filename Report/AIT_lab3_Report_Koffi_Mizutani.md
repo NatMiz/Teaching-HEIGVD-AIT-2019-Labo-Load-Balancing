@@ -46,7 +46,15 @@ Faire un diagramme de séquence
 
 **1. There is different way to implement the sticky session. One possibility is to use the SERVERID provided by HAProxy. Another way is to use the NODESESSID provided by the application. Briefly explain the difference between both approaches (provide a sequence diagram with cookies to show the difference).**
 
+**Réponse**
+With SERVERID, we configure the proxy for adding a cookie in the server response to identify the server when a client requests for the first time. When the client send another request, the proxy read the cookie and redirect to the correct server. The proxy delete the cookie and doesn't add it in the response because the client already has the cookie.
+
+With NODESESSID, it's almost the same operation. The application on the server set a NODESESSID and then the proxy concatenate the server id in the cookie. When the client send another request, the proxy read the cookie and extract its part the redirect on the correct server.
+
+
+
 *Choose one of the both stickiness approach for the next tasks.*
+We'll use the SERVERID system.
 
 **2. Provide the modified `haproxy.cfg` file with a short explanation of the modifications you did to enable sticky session management.**
 
